@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+
+const imageUrl = "https://placehold.co/600x400";
+---
+
+<a href="">
+    <Image
+        src={imageUrl}
+        alt="Comic style placeholder"
+        width="600"
+        height="400"
+        class="image has-comic-border"
+    />
+</a>
