@@ -46,17 +46,16 @@
 }
 
 
+
 .has-comic-bg {
     --dotSize: 0.1rem;
     --bgSize: 0.5rem;
     --bgPosition: calc(var(--bgSize) / 2);
-    background-color: transparent;
 
-    background-image:
-        url("/assets/background/black-paper-pattern.png"), radial-gradient(circle at center,
+    background-image: radial-gradient(circle at center,
             black var(--dotSize),
             transparent 0), radial-gradient(circle at center, black var(--dotSize), transparent 0);
-    background-size: auto, var(--bgSize) var(--bgSize);
+    background-size: var(--bgSize) var(--bgSize);
     background-position: 0 0, var(--bgPosition) var(--bgPosition);
 }
 

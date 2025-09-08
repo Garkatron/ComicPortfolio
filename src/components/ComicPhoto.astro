@@ -1,15 +1,15 @@
 ---
 import { Image } from "astro:assets";
-
+import noirmale from "../assets/noirmale.png";
 const imageUrl = "https://placehold.co/600x400";
 ---
 
 <a href="">
     <Image
-        src={imageUrl}
+        src={noirmale}
         alt="Comic style placeholder"
-        width="600"
-        height="400"
+        width="500"
+        height="500"
     />
 </a>
 <style>
@@ -19,5 +19,6 @@ const imageUrl = "https://placehold.co/600x400";
     img {
         width: 100%;
         object-fit: cover;
+        image-rendering: pixelated;
     }
 </style>

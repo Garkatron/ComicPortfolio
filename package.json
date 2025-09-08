@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.13.5",
-    "bulma": "^1.0.4"
+    "bulma": "^1.0.4",
+    "doodle.css": "^0.0.2"
   }
 }
