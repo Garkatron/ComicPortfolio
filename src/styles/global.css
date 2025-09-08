@@ -48,8 +48,8 @@
 
 
 .has-comic-bg {
-    --dotSize: 0.25rem;
-    --bgSize: 1.35rem;
+    --dotSize: 0.1rem;
+    --bgSize: 0.5rem;
     --bgPosition: calc(var(--bgSize) / 2);
 
     background-image: radial-gradient(circle at center,
@@ -65,6 +65,7 @@
     font-weight: 400;
     font-style: normal;
 }
+
 
 * {
     font-family: 'BasicComical', sans-serif;

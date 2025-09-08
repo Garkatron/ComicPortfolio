@@ -63,9 +63,6 @@ import TabPanel from "../components/TabPanel.astro";
 				flex-direction: row;
 				gap: 10px;
 				flex-wrap: wrap;
-				padding: 50px;
-
-				clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
 			}
 
 			#f3 {
@@ -74,25 +71,36 @@ import TabPanel from "../components/TabPanel.astro";
 				clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
 			}
 
+			#p1 {
+				flex: 1;
+				padding: 50px;
+				clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+			}
+			#p2 {
+				clip-path: polygon(0 0, 100% 5%, 100% 96%, 0% 100%);
+
+				flex: 2;
+				padding: 50px;
+			}
+			#p3 {
+				flex: 1;
+				padding: 50px;
+				clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
+			}
+
 			#about {
 				font-size: clamp(1rem, 1.8vw, 2.3rem);
-			}
-			.project-grid {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				gap: 20px;
 			}
 		</style>
 	</head>
 	<body class="container">
 		<div style="background-color: whitesmoke; padding: 20px;">
+			<ComicPhoto />
 			<div
 				id="f1"
 				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
 			>
 				<h1 class="title is-1">Hi! I'm [YourName]</h1>
-				<ComicPhoto />
 
 				<TabPanel
 					initialTab="about"
@@ -120,9 +128,12 @@ import TabPanel from "../components/TabPanel.astro";
 			</div>
 			<div
 				id="f2"
-				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
+				class="content is-flex is-justify-content-center is-align-items-stretch"
 			>
-				<div class="project-grid">
+				<div
+					id="p1"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
 					<ProjectCard
 						src="https://placehold.co/400x400"
 						title="Project1"
@@ -134,12 +145,22 @@ import TabPanel from "../components/TabPanel.astro";
 							{ src: ICON_MONGO, alt: "MongoDB" },
 						]}
 					/>
+				</div>
 
+				<div
+					id="p2"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
 					<ProjectCard
 						src="https://placehold.co/400x400"
 						icons={[{ src: ICON_ASTRO, alt: "Astro" }]}
 					/>
+				</div>
 
+				<div
+					id="p3"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
 					<ProjectCard
 						src="https://placehold.co/400x400"
 						icons={[
@@ -149,6 +170,7 @@ import TabPanel from "../components/TabPanel.astro";
 					/>
 				</div>
 			</div>
+
 			<div
 				id="f3"
 				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
