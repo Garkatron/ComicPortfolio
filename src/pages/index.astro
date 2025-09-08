@@ -2,6 +2,16 @@
 import { Image } from "astro:assets";
 import "../styles/global.css";
 import ComicPhoto from "../components/ComicPhoto.astro";
+import ICON_ASTRO from "../assets/icon/orange-astro.svg";
+import ICON_JAVA from "../assets/icon/java.svg";
+import ICON_TS from "../assets/icon/ts.svg";
+import ICON_REACT from "../assets/icon/react.svg";
+import ICON_JS from "../assets/icon/js.svg";
+import ICON_NODE from "../assets/icon/node.svg";
+import ICON_SQL from "../assets/icon/sql.svg";
+import ICON_MONGO from "../assets/icon/mongo.svg";
+import ProjectCard from "../components/ProjectCard.astro";
+import TabPanel from "../components/TabPanel.astro";
 ---
 
 <html lang="en">
@@ -65,13 +75,6 @@ import ComicPhoto from "../components/ComicPhoto.astro";
 				clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
 				padding: 50px;
 			}
-			#f3 {
-				flex: 3;
-				padding: 50px;
-
-				clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
-			}
-
 			#f2 {
 				flex: 2;
 				flex-direction: row;
@@ -82,8 +85,20 @@ import ComicPhoto from "../components/ComicPhoto.astro";
 				clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%);
 			}
 
+			#f3 {
+				flex: 3;
+				padding: 50px;
+				clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+			}
+
 			#about {
 				font-size: clamp(1rem, 1.8vw, 2.3rem);
+			}
+			.project-grid {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 20px;
 			}
 		</style>
 	</head>
@@ -95,47 +110,60 @@ import ComicPhoto from "../components/ComicPhoto.astro";
 			>
 				<h1 class="title is-1">Hi! I'm [YourName]</h1>
 				<ComicPhoto />
-				<h3 class="subtitle is-2">About me</h3>
-				<p id="about">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-					Voluptatibus optio dolores dolor nemo. Esse deleniti, ullam
-					at quasi quas, beatae soluta reprehenderit impedit
-					doloremque, excepturi exercitationem voluptatibus eum ad
-					molestias.
-				</p>
+
+				<TabPanel
+					initialTab="about"
+					,
+					tabs={[
+						{
+							id: "default",
+							label: "About",
+							content:
+								"Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at fugiat veritatis dolores harum laboriosam iste sunt, qui deserunt ipsa alias eveniet, incidunt architecto? Cum maxime nulla cupiditate consequuntur officia!",
+						},
+						{
+							id: "other",
+							label: "Other",
+							content:
+								"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+						},
+						{
+							id: "other2",
+							label: "Other2",
+							content: "Lorem ipsum dolor sit amet.",
+						},
+					]}
+				/>
 			</div>
 			<div
 				id="f2"
 				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
 			>
-				<div class="columns">
-					<div class="column">
-						<a href="">
-							<img
-								class="featured-project"
-								src="https://placehold.co/500x500"
-								alt=""
-							/>
-						</a>
-					</div>
-					<div class="column">
-						<a href="">
-							<img
-								class="featured-project"
-								src="https://placehold.co/500x500"
-								alt=""
-							/>
-						</a>
-					</div>
-					<div class="column">
-						<a href="">
-							<img
-								class="featured-project"
-								src="https://placehold.co/500x500"
-								alt=""
-							/>
-						</a>
-					</div>
+				<div class="project-grid">
+					<ProjectCard
+						src="https://placehold.co/400x400"
+						title="Project1"
+						description="Description."
+						icons={[
+							{ src: ICON_REACT, alt: "React" },
+							{ src: ICON_TS, alt: "TypeScript" },
+							{ src: ICON_NODE, alt: "Node.js" },
+							{ src: ICON_MONGO, alt: "MongoDB" },
+						]}
+					/>
+
+					<ProjectCard
+						src="https://placehold.co/400x400"
+						icons={[{ src: ICON_ASTRO, alt: "Astro" }]}
+					/>
+
+					<ProjectCard
+						src="https://placehold.co/400x400"
+						icons={[
+							{ src: ICON_JS, alt: "JavaScript" },
+							{ src: ICON_SQL, alt: "SQL" },
+						]}
+					/>
 				</div>
 			</div>
 			<div
