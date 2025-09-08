@@ -4,7 +4,7 @@ type Content = { id: string; label: string; content: string };
 ---
 
 <div id="container">
-    <div class="tabs is-centered">
+    <div class="tabs is-centered is-fullwidth">
         <ul>
             {
                 tabs.map((t: Content, i: number) => (
@@ -28,12 +28,13 @@ type Content = { id: string; label: string; content: string };
         }
     </div>
 </div>
-
 <style>
     #container {
-        display: flex;
-        flex-direction: column;
+        width: 100%;
         max-width: 600px;
+        margin: 0 auto;
+        padding: 0 10px;
+        box-sizing: border-box;
     }
     .tab-pane {
         display: none;

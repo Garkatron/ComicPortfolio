@@ -20,29 +20,12 @@ import TabPanel from "../components/TabPanel.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Portfolio</title>
 
 		<style>
-			html,
-			body {
-				display: flex;
-				margin: 0;
-				width: 100%;
-				justify-content: center;
-				align-items: center;
-			}
-
-			.content {
-				background-color: whitesmoke;
-				display: flex;
-				flex-direction: column;
-				border: 2px black solid;
-			}
-
 			.box {
 				position: relative;
 				margin: 10px;
-				max-width: 1200px;
 				overflow: visible;
 			}
 
@@ -102,8 +85,8 @@ import TabPanel from "../components/TabPanel.astro";
 			}
 		</style>
 	</head>
-	<body>
-		<div class="content">
+	<body class="container">
+		<div style="background-color: whitesmoke; padding: 20px;">
 			<div
 				id="f1"
 				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
@@ -171,7 +154,7 @@ import TabPanel from "../components/TabPanel.astro";
 				class="box has-comic-bg has-comic-border-simple is-flex is-justify-content-center is-align-items-center"
 			>
 				<div class="fixed-grid has-4-cols projects-grid">
-					<h2>Projects</h2>
+					<h2 class="title is-2">Projects</h2>
 					<div class="grid">
 						<img
 							class="cell"
