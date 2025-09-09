@@ -91,6 +91,44 @@ import TabPanel from "../components/TabPanel.astro";
 			#about {
 				font-size: clamp(1rem, 1.8vw, 2.3rem);
 			}
+
+			#test {
+				justify-content: center;
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+			}
+			.item {
+				position: absolute;
+				min-width: 100px;
+				min-height: 100px;
+			}
+			#maletin {
+				background-image: url("/assets/background/maletin2.png");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 1200px;
+				min-height: 1200px;
+
+				display: grid;
+				grid-template-columns: 0.5fr repeat(3, 1fr) 0.5fr; /* equilibrio */
+				grid-template-rows: repeat(2, 0.65fr) 3fr;
+				grid-column-gap: 0;
+				grid-row-gap: 0;
+				align-items: center;
+				justify-items: center;
+			}
+
+			.div1 {
+				grid-area: 3 / 2 / 4 / 3;
+			}
+			.div2 {
+				grid-area: 3 / 3 / 4 / 4;
+			}
+			.div3 {
+				grid-area: 3 / 4 / 4 / 5;
+			}
 		</style>
 	</head>
 	<body class="container">
@@ -130,6 +168,62 @@ import TabPanel from "../components/TabPanel.astro";
 				/>
 			</div>
 			<div
+				class="content is-flex is-justify-content-center is-align-items-stretch"
+			>
+				<div
+					id="p1"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
+				</div>
+
+				<div
+					id="p2"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
+					<h2 class="title is-2">Featured Projects</h2>
+				</div>
+
+				<div
+					id="p3"
+					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
+				>
+				</div>
+			</div>
+			<div id="test">
+				<div id="maletin">
+					<div class="div1">
+						<ProjectCard
+							src="https://placehold.co/400x400"
+							title="Project1"
+							description="Description."
+							icons={[
+								{ src: ICON_REACT, alt: "React" },
+								{ src: ICON_TS, alt: "TypeScript" },
+								{ src: ICON_NODE, alt: "Node.js" },
+								{ src: ICON_MONGO, alt: "MongoDB" },
+							]}
+						/>
+					</div>
+
+					<div class="div2">
+						<ProjectCard
+							src="https://placehold.co/400x400"
+							icons={[{ src: ICON_ASTRO, alt: "Astro" }]}
+						/>
+					</div>
+
+					<div class="div3">
+						<ProjectCard
+							src="https://placehold.co/400x400"
+							icons={[
+								{ src: ICON_JS, alt: "JavaScript" },
+								{ src: ICON_SQL, alt: "SQL" },
+							]}
+						/>
+					</div>
+				</div>
+			</div>
+			<div
 				id="f2"
 				class="content is-flex is-justify-content-center is-align-items-stretch"
 			>
@@ -137,40 +231,18 @@ import TabPanel from "../components/TabPanel.astro";
 					id="p1"
 					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
 				>
-					<ProjectCard
-						src="https://placehold.co/400x400"
-						title="Project1"
-						description="Description."
-						icons={[
-							{ src: ICON_REACT, alt: "React" },
-							{ src: ICON_TS, alt: "TypeScript" },
-							{ src: ICON_NODE, alt: "Node.js" },
-							{ src: ICON_MONGO, alt: "MongoDB" },
-						]}
-					/>
 				</div>
 
 				<div
 					id="p2"
 					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
 				>
-					<ProjectCard
-						src="https://placehold.co/400x400"
-						icons={[{ src: ICON_ASTRO, alt: "Astro" }]}
-					/>
 				</div>
 
 				<div
 					id="p3"
 					class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
 				>
-					<ProjectCard
-						src="https://placehold.co/400x400"
-						icons={[
-							{ src: ICON_JS, alt: "JavaScript" },
-							{ src: ICON_SQL, alt: "SQL" },
-						]}
-					/>
 				</div>
 			</div>
 
