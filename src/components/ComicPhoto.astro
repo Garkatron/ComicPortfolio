@@ -1,15 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import noirmale from "../assets/noirmale.png";
-const imageUrl = "https://placehold.co/600x400";
 ---
 
 <a href="">
     <Image
         src={noirmale}
-        alt="Comic style placeholder"
-        width="500"
-        height="500"
+        alt="ProfilePhoto"
+        width={600}
+        height={800}
+        loading="eager"
+        fetchpriority="high"
     />
 </a>
 <style>

@@ -28,26 +28,51 @@ type Content = { id: string; label: string; content: string };
         }
     </div>
 </div>
+
 <style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
     #container {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        max-width: 600px;
+        height: 100%;
         margin: 0 auto;
-        padding: 0 10px;
         box-sizing: border-box;
     }
+
+    .tabs {
+        flex: 0 0 auto;
+    }
+
+    #content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
     .tab-pane {
         display: none;
+        flex: 1;
     }
-    .visible {
-        display: block;
+
+    .tab-pane.visible {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
     }
 </style>
 
 <script>
-    function activeTab(tab: string) {
+    function activeTab(tab) {
         const panes = document.querySelectorAll(".tab-pane");
-        panes.forEach((t: Element) => {
+        panes.forEach((t) => {
             if (t.id === tab) {
                 t.classList.add("visible");
             } else {
@@ -55,15 +80,17 @@ type Content = { id: string; label: string; content: string };
             }
         });
     }
+
     document.addEventListener("DOMContentLoaded", () => {
         const tabs = document.querySelectorAll(".tabs li a");
-        tabs.forEach((tab: Element) => {
+
+        tabs.forEach((tab) => {
             tab.addEventListener("click", () => {
                 const tid = tab.dataset.tab;
                 activeTab(tid);
             });
         });
 
-        activeTab("default");
+        activeTab("{{initialTab}}");
     });
 </script>

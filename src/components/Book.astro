@@ -1,138 +1,71 @@
 ---
-const { children } = Astro.props;
+const { currentPage = 1 } = Astro.props;
 ---
 
 <div id="body">
-    <!-- Previous Button -->
-    <button id="prev-btn"> PREV </button>
+    <button id="prev-btn">PREV</button>
 
-    <!-- Book -->
-    <div id="book" class="book">
-        <!-- Paper 1 -->
-        <div id="p1" class="paper">
-            <div class="front">
-                <div id="f1" class="front-content"></div>
-            </div>
-            <div class="back">
-                <div id="b1" class="back-content">
-                    <h1>Back 1</h1>
-                </div>
-            </div>
-        </div>
-        <!-- Paper 2 -->
-        <div id="p2" class="paper">
-            <div class="front">
-                <div id="f2" class="front-content">
-                    <h1>Front 2</h1>
-                </div>
-            </div>
-            <div class="back">
-                <div id="b2" class="back-content">
-                    <h1>Back 2</h1>
-                </div>
-            </div>
-        </div>
-        <!-- Paper 3 -->
-        <div id="p3" class="paper">
-            <div class="front">
-                <div id="f3" class="front-content">
-                    <h1>Front 3</h1>
-                </div>
-            </div>
-            <div class="back">
-                <div id="b3" class="back-content">
-                    <h1>Back 3</h1>
-                </div>
-            </div>
-        </div>
+    <div id="book" class="book" data-currentpage={`${currentPage}`}>
+        <slot />
     </div>
 
-    <!-- Next Button -->
-    <button id="next-btn"> NEXT </button>
+    <button id="next-btn">NEXT</button>
 
     <script>
         const prevBTN = document.querySelector("#prev-btn");
         const nextBTN = document.querySelector("#next-btn");
         const book = document.querySelector("#book");
 
-        const paper1 = document.querySelector("#p1");
-        const paper2 = document.querySelector("#p2");
-        const paper3 = document.querySelector("#p3");
+        const papers = document.querySelectorAll(".paper");
 
         prevBTN.addEventListener("click", goPrevPage);
         nextBTN.addEventListener("click", goNextPage);
 
-        let currentLocation = 1;
-        let numOfPapers = 3;
-        let maxLocation = numOfPapers + 1;
+        let currentLocation = Number(book.dataset.currentpage);
+
+        const numOfPapers = papers.length;
+        const maxLocation = numOfPapers + 1;
 
         function openBook() {
             book.style.transform = "translateX(50%)";
-            prevBTN.style.transform = "translateX(-180px)";
-            nextBTN.style.transform = "translateX(180px)";
         }
 
         function closeBook(isAtBeginning) {
-            if (isAtBeginning) {
-                book.style.transform = "translateX(0%)";
-            } else {
-                book.style.transform = "translateX(100%)";
-            }
-
-            nextBTN.style.transform = "translateX(0px)";
-            nextBTN.style.transform = "translateX(0px)";
+            book.style.transform = isAtBeginning
+                ? "translateX(0%)"
+                : "translateX(100%)";
         }
 
         function goNextPage() {
             if (currentLocation < maxLocation) {
-                switch (currentLocation) {
-                    case 1:
-                        openBook();
-                        paper1.classList.add("flipped");
-                        paper1.style.zIndex = 1;
-                        break;
-                    case 2:
-                        paper2.classList.add("flipped");
-                        paper2.style.zIndex = 2;
-                        break;
-                    case 3:
-                        paper3.classList.add("flipped");
-                        paper3.style.zIndex = 3;
-                        closeBook(false);
-                        break;
-                    default:
-                        throw new Error("unkown state");
-                }
+                const paper = papers[currentLocation - 1];
+                paper.classList.add("flipped");
+                paper.style.zIndex = currentLocation;
+                if (currentLocation === 1) openBook();
+                if (currentLocation === numOfPapers) closeBook(false);
                 currentLocation++;
             }
         }
 
         function goPrevPage() {
             if (currentLocation > 1) {
-                switch (currentLocation) {
-                    case 2:
-                        closeBook(true);
-                        paper1.classList.remove("flipped");
-                        paper1.style.zIndex = 3;
-                        break;
-                    case 3:
-                        paper2.classList.remove("flipped");
-                        paper2.style.zIndex = 2;
-                        break;
-                    case 4:
-                        openBook();
-                        paper3.classList.remove("flipped");
-                        paper3.style.zIndex = 1;
-                        break;
-                    default:
-                        throw new Error("unkown state");
-                }
-
                 currentLocation--;
+                const paper = papers[currentLocation - 1];
+                paper.classList.remove("flipped");
+                paper.style.zIndex = numOfPapers - currentLocation + 1;
+                if (currentLocation === 1) closeBook(true);
+                if (currentLocation === numOfPapers) openBook();
             }
         }
+
+        (() => {
+            for (let i = 1; i < currentLocation; i++) {
+                goNextPage();
+            }
+        })();
     </script>
 </div>
+
 <style>
     * {
         margin: 0;
@@ -145,83 +78,39 @@ const { children } = Astro.props;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        background-color: powderblue;
+        overflow: hidden;
     }
 
-    /* Book */
     .book {
         position: relative;
-        width: 600px;
-        height: 800px;
+        max-width: 600px;
+        max-height: 800px;
+        width: 100%;
+        height: 100%;
         transition: transform 0.5s;
     }
 
-    .paper {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        perspective: 1500px;
-    }
-
-    .front,
-    .back {
-        background-image: url("assets/background/paper_texture310.jpg");
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        transform-origin: left;
-        transition: transform 0.5s;
-    }
-
-    .front {
-        z-index: 1;
-        backface-visibility: hidden;
-        border-left: 3px solid powderblue;
-    }
-
-    .back {
-        z-index: 0;
-    }
-
-    .front-content,
-    .back-content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .back-content {
-        transform: rotateY(180deg);
-    }
-
-    /* Paper flip effect */
-    .flipped .front,
-    .flipped .back {
-        transform: rotateY(-180deg);
-    }
-
-    /* Controller Buttons */
     button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         border: none;
         background-color: transparent;
         cursor: pointer;
-        margin: 10px;
-        transition: transform 0.5s;
+        font-size: 20px;
+        z-index: 9999;
+    }
+
+    #prev-btn {
+        left: 10px;
+    }
+
+    #next-btn {
+        right: 10px;
     }
 
     button:focus {
         outline: none;
-    }
-
-    button:hover i {
-        color: #636363;
     }
 
     i {
@@ -229,16 +118,11 @@ const { children } = Astro.props;
         color: gray;
     }
 
-    /* Paper stack order */
-    #p1 {
-        z-index: 3;
-    }
-
-    #p2 {
-        z-index: 2;
-    }
-
-    #p3 {
-        z-index: 1;
+    .paper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 </style>
