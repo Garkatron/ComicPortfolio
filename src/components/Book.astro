@@ -27,7 +27,12 @@ const { currentPage = 1 } = Astro.props;
         const maxLocation = numOfPapers + 1;
 
         function openBook() {
-            book.style.transform = "translateX(50%)";
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth <= 600) {
+            } else {
+                book.style.transform = "translateX(50%)";
+            }
         }
 
         function closeBook(isAtBeginning) {
@@ -86,6 +91,20 @@ const { currentPage = 1 } = Astro.props;
         width: 100%;
         height: 100%;
         transition: transform 0.5s;
+    }
+
+    @media (max-width: 1200px) {
+        .book {
+            max-width: 400px;
+            max-height: 600px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .book {
+            max-width: 340px;
+            max-height: 440px;
+        }
     }
 
     button {
