@@ -1,0 +1,19 @@
+{
+    "files.autoSave": "onFocusChange",
+    "tailwindCSS.includeLanguages": {
+        "astro": "html",
+        "vue": "html",
+        "svelte": "html",
+        "html": "html",
+        "javascript": "javascript",
+        "css": "css"
+    },
+    "tailwindCSS.experimental.classRegex": [
+        "tw`([^`]*)",
+        "tw\\.[^`]+`([^`]*)",
+        "tw\\(.*?\\)`([^`]*)"
+    ],
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}

@@ -1,5 +1,11 @@
-@import "bulma/css/bulma.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'doodle.css/doodle.css';
 
+.doodle {
+    background-color: #111111;
+}
 
 .has-comic-border-simple {
     border-width: 3px 4px 3px 5px;
@@ -41,17 +47,10 @@
 
 
 .has-comic-bg {
-    --dotSize: 0.1rem;
-    --bgSize: 0.5rem;
-    --bgPosition: calc(var(--bgSize) / 2);
+    color: whitesmoke;
     background-color: transparent;
 
-    background-image:
-        url("/assets/background/black-paper-pattern.png"), radial-gradient(circle at center,
-            black var(--dotSize),
-            transparent 0), radial-gradient(circle at center, black var(--dotSize), transparent 0);
-    background-size: auto, var(--bgSize) var(--bgSize);
-    background-position: 0 0, var(--bgPosition) var(--bgPosition);
+    background-image: url("/assets/background/papel0black.png");
 }
 
 @font-face {

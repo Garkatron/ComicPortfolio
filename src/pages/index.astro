@@ -13,6 +13,8 @@ import ICON_JS from "../assets/icon/js.svg";
 import ICON_NODE from "../assets/icon/node.svg";
 import ICON_SQL from "../assets/icon/sql.svg";
 import ICON_MONGO from "../assets/icon/mongo.svg";
+import { Image } from "astro:assets";
+import noirmale2 from "../assets/noirmale2.png";
 ---
 
 <html lang="en">
@@ -38,65 +40,38 @@ import ICON_MONGO from "../assets/icon/mongo.svg";
 		/>
 		<title>Portfolio</title>
 	</head>
-	<style>
-		#test {
-			justify-content: center;
-			align-items: center;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-		}
-		.item {
-			position: absolute;
-			min-width: 100px;
-			min-height: 100px;
-		}
-		#maletin {
-			background-image: url("/assets/background/maletin2.png");
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: 600px;
-			min-height: 600px;
-
-			display: grid;
-			grid-template-columns: 0.5fr repeat(2, 1fr) 0.5fr; /* equilibrio */
-			grid-template-rows: repeat(2, 0.65fr) 3fr;
-			grid-column-gap: 0;
-			grid-row-gap: 0;
-			align-items: center;
-			justify-items: center;
-		}
-
-		.div1 {
-			grid-area: 3 / 1 / 4 / 3;
-		}
-		.div2 {
-			grid-area: 3 / 1 / 4 / 4;
-		}
-		.div3 {
-			grid-area: 3 / 4 / 4 / 5;
-		}
-	</style>
-	<body>
+	<body class="doodle container mx-auto p-4">
 		<Book>
-			<Page index={1} totalCards={2}>
-				<div
-					slot="front"
-					style="display: flex; flex-direction: column; width: 100%; height: 100%;"
-				>
-					<div
-						style="background-image: url('assets/background/paper_texture310.jpg'); background-color: whitesmoke; padding: 20px;"
-					>
-						<ComicPhoto />
-						<div
-							id="f1"
-							class="box has-comic-bg has-comic-border-simple"
-						>
-							<h1 class="title is-1">Hi! I'm [YourName]</h1>
+			<Page index={1} totalCards={4}>
+				<div slot="front" class="flex flex-col w-full h-full">
+					<Image
+						src={noirmale2}
+						alt="ProfilePhoto"
+						width={600}
+						height={790}
+						loading="eager"
+						fetchpriority="high"
+					/>
+				</div>
+				<div slot="back" class="flex flex-col w-full h-full"></div>
+			</Page>
+			<Page index={2} totalCards={4}>
+				<div slot="front" class="flex flex-col w-full h-full">
+					<div class="h-2/3 w-full bg-cover bg-center">
+						<ComicPhoto class="w-full h-full object-cover" />
+					</div>
 
+					<div
+						class="h-1/3 w-full bg-whitesmoke p-6 flex flex-col justify-center items-center"
+					>
+						<div
+							class="w-full h-full flex flex-col justify-center items-center"
+						>
+							<h1 class="mb-2 text-center text-2xl font-bold">
+								Hi! I'm [YourName]
+							</h1>
 							<TabPanel
 								initialTab="about"
-								,
 								tabs={[
 									{
 										id: "default",
@@ -120,27 +95,18 @@ import ICON_MONGO from "../assets/icon/mongo.svg";
 						</div>
 					</div>
 				</div>
-				<div
-					slot="back"
-					style="display: flex; flex-direction: column; width: 100%; height: 100%;"
-				>
-					<div class="box has-comic-bg">
-						<h2 class="title is-2">Featured Projects</h2>
+				<div slot="back" class="flex flex-col w-full h-full">
+					<div class="has-comic-bg" style="padding: 5px;">
+						<h2
+							class="text-2xl font-bold mb-2"
+							style="margin-left: 15px;"
+						>
+							Featured Projects
+						</h2>
 					</div>
 
-					<div class="columns">
-						<div class="column">
-							<ProjectCard
-								src="https://placehold.co/400x400"
-								title="Project1"
-								description="Description."
-								icons={[
-									{ src: ICON_REACT, alt: "React" },
-									{ src: ICON_TS, alt: "TypeScript" },
-									{ src: ICON_NODE, alt: "Node.js" },
-									{ src: ICON_MONGO, alt: "MongoDB" },
-								]}
-							/>
+					<div class="w-full grid grid-cols-2 grid-rows-5 gap-4">
+						<div>
 							<ProjectCard
 								src="https://placehold.co/400x400"
 								title="Project1"
@@ -153,7 +119,7 @@ import ICON_MONGO from "../assets/icon/mongo.svg";
 								]}
 							/>
 						</div>
-						<div class="column">
+						<div>
 							<ProjectCard
 								src="https://placehold.co/400x400"
 								title="Project1"
@@ -165,6 +131,21 @@ import ICON_MONGO from "../assets/icon/mongo.svg";
 									{ src: ICON_MONGO, alt: "MongoDB" },
 								]}
 							/>
+						</div>
+						<div class="row-start-2">
+							<ProjectCard
+								src="https://placehold.co/400x400"
+								title="Project1"
+								description="Description."
+								icons={[
+									{ src: ICON_REACT, alt: "React" },
+									{ src: ICON_TS, alt: "TypeScript" },
+									{ src: ICON_NODE, alt: "Node.js" },
+									{ src: ICON_MONGO, alt: "MongoDB" },
+								]}
+							/>
+						</div>
+						<div class="row-start-2">
 							<ProjectCard
 								src="https://placehold.co/400x400"
 								title="Project1"
@@ -180,191 +161,120 @@ import ICON_MONGO from "../assets/icon/mongo.svg";
 					</div>
 				</div>
 			</Page>
-			<Page index={2} totalCards={2}>
-				<div
-					slot="front"
-					style="display: flex; flex-direction: column; width: 100%; height: 100%;"
-				>
-					<div class="box has-comic-bg">
-						<h2 class="title is-2">Projects</h2>
+			<Page index={3} totalCards={4}>
+				<div slot="back" class="flex flex-col w-full h-full">
+					<div class="has-comic-bg relative p-4 mb-4">
+						<h2
+							class="text-2xl font-bold mb-2"
+							style="margin-left: 15px;"
+						>
+							Contact Me
+						</h2>
 					</div>
 
-					<div class="fixed-grid has-3-cols projects-grid">
-						<div class="grid">
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-							<img
-								class="cell"
-								src="https://placehold.co/200x100"
-								alt=""
-							/>
-						</div>
-					</div>
-				</div>
-				<!-- BACK -->
-				<div
-					slot="back"
-					style="display: flex; flex-direction: column; width: 100%; height: 100%;"
-				>
-					<div class="field has-comic-bg">
-						<label class="label">Name</label>
-						<div class="control">
+					<form
+						action="https://formspree.io/f/your_form_id"
+						method="POST"
+						class="flex flex-col gap-4"
+					>
+						<!-- Name -->
+						<div class="flex flex-col">
+							<label class="font-semibold mb-1" for="name"
+								>Name</label
+							>
 							<input
-								class="input"
+								class="border rounded p-2"
 								type="text"
-								placeholder="Text input"
+								name="name"
+								id="name"
+								placeholder="Your name"
+								required
 							/>
 						</div>
-					</div>
 
-					<div class="field has-comic-bg">
-						<label class="label">Username</label>
-						<div class="control has-icons-left has-icons-right">
+						<!-- Email -->
+						<div class="flex flex-col">
+							<label class="font-semibold mb-1" for="email"
+								>Email</label
+							>
 							<input
-								class="input is-success"
-								type="text"
-								placeholder="Text input"
-								value="bulma"
-							/>
-							<span class="icon is-small is-left">
-								<i class="fas fa-user"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fas fa-check"></i>
-							</span>
-						</div>
-						<p class="help is-success">
-							This username is available
-						</p>
-					</div>
-
-					<div class="field has-comic-bg">
-						<label class="label">Email</label>
-						<div class="control has-icons-left has-icons-right">
-							<input
-								class="input is-danger"
+								class="border rounded p-2"
 								type="email"
-								placeholder="Email input"
-								value="hello@"
+								name="email"
+								id="email"
+								placeholder="you@example.com"
+								required
 							/>
-							<span class="icon is-small is-left">
-								<i class="fas fa-envelope"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fas fa-exclamation-triangle"></i>
-							</span>
 						</div>
-						<p class="help is-danger">This email is invalid</p>
-					</div>
 
-					<div class="field has-comic-bg">
-						<label class="label">Subject</label>
-						<div class="control">
-							<div class="select">
-								<select>
-									<option>Select dropdown</option>
-									<option>With options</option>
-								</select>
-							</div>
+						<!-- Subject -->
+						<div class="flex flex-col">
+							<label class="font-semibold mb-1" for="subject"
+								>Subject</label
+							>
+							<input
+								class="border rounded p-2"
+								type="text"
+								name="subject"
+								id="subject"
+								placeholder="Subject"
+							/>
 						</div>
-					</div>
 
-					<div class="field has-comic-bg">
-						<label class="label">Message</label>
-						<div class="control">
-							<textarea class="textarea" placeholder="Textarea"
-							></textarea>
+						<!-- Message -->
+						<div class="flex flex-col">
+							<label class="font-semibold mb-1" for="message"
+								>Message</label
+							>
+							<textarea
+								class="border rounded p-2 h-32 resize-none"
+								name="message"
+								id="message"
+								placeholder="Your message..."
+								required></textarea>
 						</div>
-					</div>
 
-					<div class="field has-comic-bg">
-						<div class="control">
-							<label class="checkbox">
-								<input type="checkbox" />
-								I agree to the <a href="#"
+						<!-- Terms checkbox -->
+						<div class="flex items-center gap-2">
+							<input
+								type="checkbox"
+								name="terms"
+								id="terms"
+								required
+							/>
+							<label for="terms"
+								>I agree to the <a href="#"
 									>terms and conditions</a
-								>
-							</label>
-						</div>
-					</div>
-
-					<div class="field has-comic-bg">
-						<div class="control">
-							<label class="radio">
-								<input type="radio" name="question" />
-								Yes
-							</label>
-							<label class="radio">
-								<input type="radio" name="question" />
-								No
-							</label>
-						</div>
-					</div>
-
-					<div class="field has-comic-bg is-grouped">
-						<div class="control">
-							<button class="button is-link">Submit</button>
-						</div>
-						<div class="control">
-							<button class="button is-link is-light"
-								>Cancel</button
+								></label
 							>
 						</div>
-					</div>
+
+						<!-- Submit button -->
+						<div class="flex gap-2">
+							<button
+								type="submit"
+								class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+							>
+								Submit
+							</button>
+							<button
+								type="reset"
+								class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+							>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</Page>
+			<Page index={4} totalCards={4}>
+				<div slot="front" class="flex flex-col w-full h-full">
+					<div class="h-full"></div>
+				</div>
+				<div
+					slot="back"
+					class="flex flex-col w-full h-full has-comic-bg"
+				>
 				</div>
 			</Page>
 		</Book>
