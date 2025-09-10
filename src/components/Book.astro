@@ -12,6 +12,9 @@ const { currentPage = 1 } = Astro.props;
     <button id="next-btn">NEXT</button>
 
     <script>
+        const fold = new Audio("/assets/sounds/fold.wav");
+        const open = new Audio("/assets/sounds/open.wav");
+        const close = new Audio("/assets/sounds/close.wav");
         const prevBTN = document.querySelector("#prev-btn");
         const nextBTN = document.querySelector("#next-btn");
         const book = document.querySelector("#book");
@@ -21,15 +24,18 @@ const { currentPage = 1 } = Astro.props;
         prevBTN.addEventListener("click", goPrevPage);
         nextBTN.addEventListener("click", goNextPage);
 
-        let currentLocation = Number(book.dataset.currentpage);
+        // Number(book.dataset.currentpage)
+        let currentLocation = 1;
 
         const numOfPapers = papers.length;
         const maxLocation = numOfPapers + 1;
 
         function openBook() {
+            open.currentTime = 0;
+            open.play();
             const screenWidth = window.innerWidth;
 
-            if (screenWidth <= 450) {
+            if (screenWidth <= 686) {
                 book.style.transform = "translateY(-50%)";
             } else {
                 book.style.transform = "translateX(50%)";
@@ -37,6 +43,8 @@ const { currentPage = 1 } = Astro.props;
         }
 
         function closeBook(isAtBeginning) {
+            close.currentTime = 0;
+            close.play();
             book.style.transform = isAtBeginning
                 ? "translateX(0%)"
                 : "translateX(100%)";
@@ -44,6 +52,8 @@ const { currentPage = 1 } = Astro.props;
 
         function goNextPage() {
             if (currentLocation < maxLocation) {
+                fold.currentTime = 0;
+                fold.play();
                 const paper = papers[currentLocation - 1];
                 paper.classList.add("flipped");
                 setTimeout(() => {
@@ -57,6 +67,10 @@ const { currentPage = 1 } = Astro.props;
 
         function goPrevPage() {
             if (currentLocation > 1) {
+                fold.currentTime = 0;
+
+                fold.play();
+
                 currentLocation--;
                 const paper = papers[currentLocation - 1];
                 paper.classList.remove("flipped");

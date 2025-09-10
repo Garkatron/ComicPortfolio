@@ -40,6 +40,111 @@ import noirmale2 from "../assets/noirmale2.png";
 		/>
 		<title>Portfolio</title>
 	</head>
+	<style>
+		.parent {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			grid-column-gap: 0px;
+			grid-row-gap: 0px;
+			height: 100%;
+			width: 100%;
+			gap: 0;
+			position: relative;
+		}
+
+		.item {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-image: url("https://picsum.photos/200/100");
+			width: 100%;
+			height: 100%;
+			filter: grayscale(100%);
+			transition:
+				filter 0.5s ease,
+				transform 0.3s ease;
+			transform-origin: center;
+			z-index: 1;
+			position: relative;
+		}
+
+		.item:hover {
+			filter: grayscale(0%);
+			transform: scale(1.5);
+		}
+
+		.div1 {
+			grid-area: 1 / 1 / 2 / 3;
+			position: relative;
+			z-index: 1;
+			overflow: visible;
+		}
+		.shadow1 {
+			position: absolute;
+			inset: 0;
+			background: #3c3c3c;
+			z-index: -1;
+			clip-path: polygon(0 -2%, 100% 0, 100% 83%, 0 100%);
+		}
+		.shadow1 .item {
+			clip-path: polygon(1% 2%, 99% 2%, 99% 80%, 1% 99%);
+		}
+
+		.div2 {
+			grid-area: 2 / 1 / 3 / 2;
+			position: relative;
+			z-index: 1;
+			overflow: visible;
+		}
+		.shadow2 {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: #3c3c3c;
+			z-index: -1;
+			clip-path: polygon(0 3%, 100% 13%, 100% 100%, 0 91%);
+		}
+		.shadow2 .item {
+			clip-path: polygon(0 3%, 100% 13%, 100% 100%, 0 91%);
+		}
+
+		.div3 {
+			grid-area: 2 / 2 / 3 / 3;
+			position: relative;
+			z-index: 1;
+			overflow: visible;
+		}
+		.shadow3 {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: #3c3c3c;
+			z-index: -1;
+			clip-path: polygon(0 9%, 100% 0, 100% 87%, 0 97%);
+		}
+		.shadow3 .item {
+			clip-path: polygon(0 9%, 100% 0, 100% 87%, 0 97%);
+		}
+
+		.div4 {
+			grid-area: 3 / 1 / 4 / 3;
+			position: relative;
+			z-index: 1;
+			overflow: visible;
+		}
+		.shadow4 {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: #3c3c3c;
+			z-index: -1;
+			clip-path: polygon(0 9%, 100% 0, 100% 87%, 0 97%);
+		}
+		.shadow4 .item {
+			clip-path: polygon(0 9%, 100% 0, 100% 87%, 0 97%);
+		}
+	</style>
 	<body class="doodle container mx-auto p-4">
 		<Book>
 			<Page index={1} totalCards={4}>
@@ -59,7 +164,7 @@ import noirmale2 from "../assets/noirmale2.png";
 			<Page index={2} totalCards={4}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<div class="h-2/3 w-full bg-cover bg-center">
-						<ComicPhoto class="w-full h-full object-cover" />
+						<ComicPhoto class="object-cover" />
 					</div>
 
 					<div
@@ -162,6 +267,32 @@ import noirmale2 from "../assets/noirmale2.png";
 				</div>
 			</Page>
 			<Page index={3} totalCards={4}>
+				<div slot="front" class="flex flex-col w-full h-full">
+					<div
+						class="parent grid grid-cols-2 grid-rows-5 gap-0 overflow-visible relative has-comicg"
+					>
+						<div class="div1">
+							<div class="shadow1">
+								<div class="item"></div>
+							</div>
+						</div>
+						<div class="div2">
+							<div class="shadow2">
+								<div class="item"></div>
+							</div>
+						</div>
+						<div class="div3 row-span-2">
+							<div class="shadow3">
+								<div class="item"></div>
+							</div>
+						</div>
+						<div class="div4">
+							<div class="shadow4">
+								<div class="item"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div slot="back" class="flex flex-col w-full h-full">
 					<div class="has-comic-bg relative p-4 mb-4">
 						<h2
@@ -280,18 +411,3 @@ import noirmale2 from "../assets/noirmale2.png";
 		</Book>
 	</body>
 </html>
-<!--
-
-	<div
-						class="content is-flex is-justify-content-center is-align-items-stretch"
-					>
-						
-
-						<div
-							id="p2"
-							class="box has-comic-bg is-flex is-justify-content-center is-align-items-stretch"
-						>
-							<h2 class="title is-2">Featured Projects</h2>
-						</div>
-					</div>
--->
