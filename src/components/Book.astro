@@ -29,7 +29,8 @@ const { currentPage = 1 } = Astro.props;
         function openBook() {
             const screenWidth = window.innerWidth;
 
-            if (screenWidth <= 600) {
+            if (screenWidth <= 450) {
+                book.style.transform = "translateY(-50%)";
             } else {
                 book.style.transform = "translateX(50%)";
             }

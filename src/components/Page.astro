@@ -66,4 +66,18 @@ const zIndex = totalCards - index + 1;
     .flipped .back {
         transform: rotateY(-180deg);
     }
+
+    @media (max-width: 450px) {
+        .paper {
+            top: 0%;
+        }
+        .front,
+        .back {
+            transform-origin: center;
+        }
+        .flipped .front,
+        .flipped .back {
+            transform: translateY(450px) rotateY(-180deg);
+        }
+    }
 </style>
