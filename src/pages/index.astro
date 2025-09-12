@@ -49,7 +49,6 @@ import noirmale2 from "../assets/noirmale2.png";
 	</style>
 	<body class="doodle container mx-auto p-4">
 		<Book>
-			<!-- Página 1: Perfil -->
 			<Page index={1} totalCards={6}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<Image
@@ -126,7 +125,6 @@ import noirmale2 from "../assets/noirmale2.png";
 				</div>
 			</Page>
 
-			<!-- Página 2: Presentación -->
 			<Page index={2} totalCards={6}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<div class="h-2/3 w-full bg-cover bg-center">
@@ -194,7 +192,6 @@ import noirmale2 from "../assets/noirmale2.png";
 				</div>
 			</Page>
 
-			<!-- Página 3: Proyectos -->
 			<Page index={3} totalCards={6}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<div class="header has-comic-bg">
@@ -208,20 +205,44 @@ import noirmale2 from "../assets/noirmale2.png";
 					<div
 						class="grid grid-cols-4 grid-rows-3 gap-2 w-full h-full p-2 bg-gray-900"
 					>
-						<!-- Aquí van tus imágenes de proyectos -->
+						<Image
+							width={200}
+							height={100}
+							src="https://placehold.co/200x200"
+							alt="Astro"
+							class="w-16 h-16 object-cover"
+						/>
+						<Image
+							width={200}
+							height={100}
+							src="https://placehold.co/200x200"
+							alt="Astro"
+							class="w-16 h-16 object-cover"
+						/>
+						<Image
+							width={200}
+							height={100}
+							src="https://placehold.co/200x200"
+							alt="Astro"
+							class="w-16 h-16 object-cover"
+						/>
+						<Image
+							width={200}
+							height={100}
+							src="https://placehold.co/200x200"
+							alt="Astro"
+							class="w-16 h-16 object-cover"
+						/>
 					</div>
 				</div>
 				<div slot="back" class="flex flex-col w-full h-full">
 					<div class="header has-comic-bg">
-						<h2 class="text-2xl font-bold mb-2 ml-4">
-							Tecnologías
-						</h2>
+						<h2 class="text-2xl font-bold mb-2 ml-4">Tech Stack</h2>
 					</div>
 
 					<div
 						class="flex flex-wrap gap-6 justify-center items-stretch p-6"
 					>
-						{/* Frontend */}
 						<fieldset
 							class="flex flex-col justify-between items-center flex-1 p-4 border border-gray-200 rounded-2xl shadow-sm bg-white min-w-[250px]"
 						>
@@ -262,7 +283,6 @@ import noirmale2 from "../assets/noirmale2.png";
 							</div>
 						</fieldset>
 
-						{/* Backend */}
 						<fieldset
 							class="flex flex-col justify-between items-center flex-1 p-4 border border-gray-200 rounded-2xl shadow-sm bg-white min-w-[250px]"
 						>
@@ -282,7 +302,6 @@ import noirmale2 from "../assets/noirmale2.png";
 							</div>
 						</fieldset>
 
-						{/* Bases de Datos */}
 						<fieldset
 							class="flex flex-col justify-between items-center flex-1 p-4 border border-gray-200 rounded-2xl shadow-sm bg-white min-w-[250px]"
 						>
@@ -309,7 +328,6 @@ import noirmale2 from "../assets/noirmale2.png";
 							</div>
 						</fieldset>
 
-						{/* Otros */}
 						<fieldset
 							class="flex flex-col justify-between items-center flex-1 p-4 border border-gray-200 rounded-2xl shadow-sm bg-white min-w-[250px]"
 						>
@@ -332,7 +350,6 @@ import noirmale2 from "../assets/noirmale2.png";
 				</div>
 			</Page>
 
-			<!-- Página 4: Tecnologías -->
 			<Page index={4} totalCards={6}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<div class="header has-comic-bg">
@@ -340,18 +357,13 @@ import noirmale2 from "../assets/noirmale2.png";
 							class="text-2xl font-bold mb-2"
 							style="margin-left: 15px;"
 						>
-							Estudios
+							Formation
 						</h2>
 					</div>
 					<blockquote>
 						<div class="p-6 flex flex-col gap-4">
-							<p>
-								<strong>Licenciatura en X</strong> – Universidad
-								Y (2015 - 2019)
-							</p>
-							<p>
-								<strong>Curso en Z</strong> – Academia W (2020)
-							</p>
+							<p>A</p>
+							<p>B</p>
 						</div>
 					</blockquote>
 				</div>
@@ -361,25 +373,18 @@ import noirmale2 from "../assets/noirmale2.png";
 							class="text-2xl font-bold mb-2"
 							style="margin-left: 15px;"
 						>
-							Experiencia Laboral
+							JOB / PRACTICES
 						</h2>
 					</div>
 					<div class="p-6 flex flex-col gap-4">
 						<blockquote>
-							<p>
-								<strong>Empresa A</strong> – Desarrollador Frontend
-								(2019 - 2021)
-							</p>
-							<p>
-								<strong>Empresa B</strong> – Fullstack Developer
-								(2021 - 2023)
-							</p>
+							<p>A</p>
+							<p>B</p>
 						</blockquote>
 					</div>
 				</div>
 			</Page>
 
-			<!-- Página 5: Estudios -->
 			<Page index={5} totalCards={6}>
 				<div slot="front" class="flex flex-col w-full h-full">
 					<div class="header has-comic-bg">
@@ -391,9 +396,9 @@ import noirmale2 from "../assets/noirmale2.png";
 						</h2>
 					</div>
 					<ul class="list-disc list-inside">
-						<li>Improved website performance by 40%</li>
-						<li>Implemented automated testing pipelines</li>
-						<li>Mentored 3 junior developers</li>
+						<li>A</li>
+						<li>B</li>
+						<li>C</li>
 					</ul>
 				</div>
 				<div slot="back" class="flex flex-col w-full h-full"></div>
